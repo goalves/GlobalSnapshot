@@ -1,0 +1,18 @@
+Initiator Process Pi:
+
+Process records its own state
+Creates the Marker messages
+for j=1 to N except i
+	Pi sends out a Marker on outgoing channel Cij;
+Start recording the incoming messages on each of the incoming channels at Pi (for j=1 to N except i)
+
+Other process Pi that receives the marker message on an incoming channel Cki:
+
+if(this is the first Marker Pi is seeing)
+	Pi records its own state first
+	Marks the state of the channel Cki (the one that just received a message) as "empty"
+	for j=1 to N exept i
+		Pi sends out a marker messsage on outgoing Channel Cij
+	Starts recording the incoming messages on each of the incoming channels at Pi:Cij (for j=1 to N except i and k)
+else // If this is not the first time seing a marker message
+	Mark the state of the channel Cki as all the messages that have arrived on it since recording was turned on for Cki.
